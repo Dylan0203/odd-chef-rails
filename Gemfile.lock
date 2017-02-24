@@ -212,6 +212,7 @@ PLATFORMS
 
 DEPENDENCIES
   berkshelf
+  chef
   knife-solo
 
 BUNDLED WITH
