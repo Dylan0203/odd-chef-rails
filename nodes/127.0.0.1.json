@@ -1,7 +1,26 @@
 {
   "run_list": [
-
+    "recipe[create-user]",
+    "recipe[build-essential::default]",
+    "recipe[git::default]",
+    "recipe[sudo]",
+    "recipe[rails-stack]",
+    "recipe[nginx_passenger]"
   ],
+  "user": {
+    "name": "deployer",
+    "password": "$1$Edk0bzEd$eq5W31AiaDKLeIMZsD03x0"
+  },
+  "nginx_passenger":{
+    "ruby": "/home/deployer/.rbenv/shims/ruby"
+  },
+  "authorization": {
+    "sudo": {
+      "groups": ["admin", "wheel", "sysadmin"],
+      "users": ["deployer", "vagrant"],
+      "passwordless": "true"
+    }
+  },
   "automatic": {
     "ipaddress": "127.0.0.1"
   }
